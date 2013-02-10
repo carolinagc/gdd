@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+
+<div  id="single-asset" class="span7 ofsset1">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <h1><%= t("form.title") %>:</h1>
+    <%= @event.title %>
+  </p>
+  
+  <%= favourite_button(@event) if current_user.present? %>
+  
+  <p>
+    <b><%=  t("form.start_date") %></b>
+    <%= @event.date %>
+  </p>
+  
+  <p>
+    <b>Time:</b>
+    <%= @event.time.strftime('%H:%M') if !@event.time.nil? %>
+  </p>
+  
+  <p>
+    <b><%=  t("form.description") %>:</b>
+    <%= @event.description %>
+  </p>
+<p>
+  <b>Tags:</b>
+  <div style="background-color: #E89BB6">
+      <%= @event.tag_list {|t| t} %>
+  </div>
+</p>
+
+  <p>
+   <b>Cycle:</b>
+     <% if @event.cycles.present? %>  
+       <%  @event.cycles.each do |c|  %>
+          <td><%= link_to c.title, c.title %></td>
+       <% end %>
+    <% end %>
+  </p>
+  
+  <%= link_to t("link.edit"), edit_event_path(@event) %> |
+  <%= link_to t("link.back"), events_path %>
+  
+</div>
+

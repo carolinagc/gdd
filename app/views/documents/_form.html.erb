@@ -1,0 +1,56 @@
+<div  id="single-asset" class="span7 ofsset1">
+<%= form_for(@document) do |f| %>
+  <% if @document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% @document.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label t("metadata.title") %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+
+    <%= f.label t("metadata.date") %>
+    <%= f.datepicker :date, :dateFormat => "yy-mm-dd" %>
+
+
+  </div>
+  <div class="field">
+    <%= f.label t("metadata.description") %>  
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%=  f.label t("metadata.license") %>
+    <%= f.text_field :license %>
+  </div>
+  <div class="field">
+    <%=  f.label t("metadata.format") %> 
+    <%= f.text_field :format %>
+  </div>
+  <div class="field">
+    <%=  f.label t("metadata.language") %>
+    <%= f.text_field :language %>
+  </div>
+
+  <div class="field" style="background-color: #E89BB6">
+    <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+    <%= f.text_field :tag_list %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
+
+
+

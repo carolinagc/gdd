@@ -1,0 +1,35 @@
+<div  id="single-asset" class="span7 ofsset1">
+  
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%= t"global.photo" %></b>
+  <h1><%= @photo.title %></h1>
+</p>
+ <%= favourite_button(@photo) if current_user.present? %>
+
+<div class="image">
+      <%= image_tag @photo.image_url(:thumb) if @photo.image? %>
+    </div>
+<p>
+  <b><%=  t("metadata.description") %>:</b>
+  <%= @photo.description %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <div style="background-color: #E89BB6">
+      <%= @photo.tag_list {|t| t} %>
+  </div>
+</p>
+
+
+<p>
+  <b><%= t("misc.content_related") %>:</b>
+  <% # @photo.content_related  %>
+</p>
+
+<%= link_to t("link.edit"), edit_photo_path(@photo) if current_user.present? %> |
+<%= link_to t("link.back"), :back %>
+
+</div>

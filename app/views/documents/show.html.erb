@@ -1,0 +1,45 @@
+<div  id="single-asset" class="span7 ofsset1">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b><%=  t("metadata.title") %>:</b>  
+  <%= @document.title %>
+</p>
+ <%= favourite_button(@document) if current_user.present? %>
+ 
+<p>
+  <b><%=  t("metadata.date") %>:</b> 
+  <%= @document.date %>
+</p>
+
+<p>
+  <b><%=  t("metadata.description") %>:</b>
+  <%= @document.description %>
+</p>
+
+<p>
+  <b><%=  t("metadata.license") %>:</b>
+  <%= @document.license %>
+</p>
+
+<p>
+  <b><%=  t("metadata.format") %>:</b>
+  <%= @document.format %>
+</p>
+
+<p>
+  <b><%=  t("metadata.duration") %>:</b>
+  <%= @document.language %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <div style="background-color: #E89BB6">
+
+      <%= @document.tag_list {|t| t} %>
+  </div>
+</p>
+
+<%= link_to t("link.edit"), edit_document_path(@document) %> |
+<%= link_to t("link.back"), documents_path %>
+</div>
